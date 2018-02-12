@@ -1,0 +1,11 @@
+{
+    "auth": {
+        "owner": "",
+        "token": ""
+    },
+    "prefix": "?z ",
+    "discord": {
+        "homeChannel": "",
+        "guild": ""
+    }
+}
