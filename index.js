@@ -30,9 +30,6 @@ client.on('message', m => {
     }
 });
 
-client.on('messageDelete', m => {
-    home.send(listen.delete(m));
-
-});
+client.on('messageDelete', m => home.send(listen.delete(m)));
 
 client.login(config.auth.token);
