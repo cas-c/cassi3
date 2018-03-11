@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const command = require('./command');
+const listen = require('./listen');
 const { censorship } = require('./util');
 
 const config = require('./config');
@@ -21,7 +22,7 @@ client.on('message', m => {
 
     if (m.content.startsWith(config.prefix)) {
         const response = command(m.content.split(config.prefix)[1], m, client);
-        console.log(response);
+        m.channel.send(response);
         return;
     }
 });
