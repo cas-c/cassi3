@@ -6,9 +6,12 @@ const listen = require('./listen');
 const { censorship } = require('./util');
 
 const config = require('./config');
+const homeID = config.discord.homeChannel;
+let home = null;
 
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag}.`);
+    home = client.channels.get(homeID);
 });
 
 client.on('message', m => {
@@ -25,6 +28,11 @@ client.on('message', m => {
         m.channel.send(response);
         return;
     }
+});
+
+client.on('messageDelete', m => {
+    home.send(listen.delete(m));
+
 });
 
 client.login(config.auth.token);
