@@ -1,11 +1,23 @@
 {
     "auth": {
-        "owner": "",
-        "token": ""
+        "owner": "owner UserID",
+        "token": "auth token"
     },
-    "prefix": "?z ",
+    "prefix": "prefix ",
     "discord": {
-        "homeChannel": "",
-        "guild": ""
+        "homeChannel": "channel id to report to",
+        "guild": "home guild to monitor",
+        "exemptions": [
+            "username of exempted person"
+        ],
+        "banned": [
+            "words worthy of banning"
+        ],
+        "warned": [
+            "warning only words"
+        ],
+        "false": [
+            "false positives for words in the warning zone"
+        ]
     }
 }
