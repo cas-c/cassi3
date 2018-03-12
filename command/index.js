@@ -1,7 +1,13 @@
 const info = require('./info');
+const stats = require('./stats');
 
 const command = (text, message, client) => {
     const nyan = client.guilds.first();
+
+    if (text.startsWith('stats')) {
+        return stats(message, client);
+    }
+
     if (text.startsWith('info')) {
         if (message.channel.type === 'dm') return 'This command is only available in guilds.';
         
