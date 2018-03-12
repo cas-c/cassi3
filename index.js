@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 const command = require('./command');
 const listen = require('./listen');
-const { censorship } = require('./util');
+const { censorship, notification } = require('./util');
 
 const config = require('./config');
 const homeID = config.discord.homeChannel;
@@ -15,12 +15,23 @@ client.on('ready', () => {
 });
 
 client.on('message', m => {
-    const exempt = censorship.exemptions(m.author.username);
-    const clean = censorship.filtering(m.cleanContent.toLowerCase());
+    if (m.channel.type === 'text') { // in other words, not a DM
+        if (!censorship.exemptions(m.author.username)) {
+            const bannedWords = censorship.bannedWords(m.cleanContent.toLowerCase());
 
-    if (!clean && !exempt) {
-        console.log('bad times');
-        return;
+            if (bannedWords) {
+                home.send(notification(m));
+                if (m.member.bannable) m.member.ban();
+                if (m.deletable) message.delete();
+                return;
+            }
+
+            const warnedWords = censorship.warnedWords(m.cleanContent.toLowerCase());
+            if (warnedWords) {
+                home.send(notification(m));
+                return;
+            }
+        }
     }
 
     if (m.content.startsWith(config.prefix)) {

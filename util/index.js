@@ -1,12 +1,15 @@
 const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 
-const exemptions = username => {
-    return true;
-}
+const censorship = require('./censorship');
 
-const filtering = text => {
-    return text;
+const notification = message => {
+    return new RichEmbed()
+        .setTitle('🚨 Funny Alert 🚨')
+        .addField('User', user.username + '#' + user.discriminator)
+        .addField('Message', message.cleanContent)
+        .setThumbnail(message.author.user.displayAvatarURL)
+        .setTimestamp(new Date());
 }
 
 const userInfo = (user, title) => new RichEmbed()
@@ -26,10 +29,8 @@ const simpleEmbed = (user, message) => new RichEmbed()
     .setThumbnail(user.displayAvatarURL);
 
 module.exports = {
-    censorship: {
-        exemptions,
-        filtering
-    },
+    censorship,
+    notification,
     userInfo,
     simpleEmbed
 };

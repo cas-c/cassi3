@@ -4,7 +4,7 @@ const command = (text, message, client) => {
     const nyan = client.guilds.first();
     if (text.startsWith('info')) {
         if (message.channel.type === 'dm') return 'This command is only available in guilds.';
-
+        
         let user = undefined;
         if (message.mentions.members !== {}) {
             // tries to find the member version if there is a mention
@@ -28,6 +28,7 @@ const command = (text, message, client) => {
                 user = search;
             }
         }
+
         if (user) {
             return info(user).setFooter('Generated for ' + message.member.displayName);
         } else {
