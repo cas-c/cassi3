@@ -20,10 +20,16 @@ const userInfo = (user, title) => new RichEmbed()
     .setTimestamp(new Date())
     .setThumbnail(user.user.displayAvatarURL)
 
+const simpleEmbed = (user, message) => new RichEmbed()
+    .setTitle(message)
+    .addField('User', user.username + '#' + user.discriminator)
+    .setThumbnail(user.displayAvatarURL);
+
 module.exports = {
     censorship: {
         exemptions,
         filtering
     },
-    userInfo
+    userInfo,
+    simpleEmbed
 };
