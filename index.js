@@ -31,5 +31,13 @@ client.on('message', m => {
 });
 
 client.on('messageDelete', m => home.send(listen.delete(m)));
+client.on('guildMemberAdd', m => home.send(listen.join(m)));
+client.on('guildMemberRemove', m => home.send(listen.part(m)));
+client.on('guildBanAdd', (g, m) => home.send(listen.ban('add', m)));
+client.on('guildBanRemove', (g, m) => home.send(listen.ban('remove', m)));
+client.on('disconnect', () => console.warn('Cassi3 disconnected from Discord.'));
+client.on('reconnecting', () => console.warn('Cassi3 reconnecting to Discord.'));
+client.on('error', console.error);
+client.on('warn', console.warn);
 
 client.login(config.auth.token);
