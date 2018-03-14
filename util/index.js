@@ -6,9 +6,8 @@ const censorship = require('./censorship');
 const notification = message => {
     return new RichEmbed()
         .setTitle('🚨 Funny Alert 🚨')
-        .addField('User', user.username + '#' + user.discriminator)
+        .addField('User', message.author.username + '#' + message.author.discriminator)
         .addField('Message', message.cleanContent)
-        .setThumbnail(message.author.user.displayAvatarURL)
         .setTimestamp(new Date());
 }
 
