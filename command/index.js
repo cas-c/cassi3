@@ -1,11 +1,16 @@
 const info = require('./info');
 const stats = require('./stats');
+const { notification } = require('../util');
 
 const command = (text, message, client) => {
     const nyan = client.guilds.first();
 
     if (text.startsWith('stats')) {
         return stats(message, client);
+    }
+
+    if (text.startsWith('notification')) {
+        return notification(message);
     }
 
     if (text.startsWith('info')) {
