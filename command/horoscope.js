@@ -3,7 +3,6 @@ const { emoji, shuffleArray } = require('../util');
 
 const horoscope = message => {
     const e = shuffleArray(emoji);
-    console.log(message.member.user.displayAvatarURL);
     return new RichEmbed()
         .setDescription(`Let's take a look at what your future holds for you... Hmm...\n`)
         .addField('Outlook for Tomorrow', e[0], true)
