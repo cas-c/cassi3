@@ -10,8 +10,6 @@ const horoscope = message => {
         .addField('Love Life', e[1], true)
         .addField('Luck', e[2], true)
         .setFooter(`Emoji Horoscope for ${message.member.nickname ? message.member.nickname + ` (${message.author.username})` : message.author.username}`, message.author.avatarURL)
-        // .addField('Channel', message.channel + `\n#${message.channel.name}`, true)
-        // .addField('Message', message.cleanContent)
         .setTimestamp(new Date());
 };
 
