@@ -1,8 +1,6 @@
 const { RichEmbed } = require('discord.js');
-const { censorship } = require('../util');
 
 const deleteListener = message => {
-    if (censorship.exemptions(message.author.username)) return;
     const user = message.author;
     const content = message.cleanContent ? message.cleanContent : 'No text detected.';
     const fa = message.attachments.first();

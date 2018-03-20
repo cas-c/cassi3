@@ -41,7 +41,10 @@ client.on('message', m => {
     }
 });
 
-client.on('messageDelete', m => home.send(listen.delete(m)));
+client.on('messageDelete', m => {
+    if (censorship.exemptions(m.author.username)) return;
+    home.send(listen.delete(m));
+});
 client.on('guildMemberAdd', m => home.send(listen.join(m)));
 client.on('guildMemberRemove', m => home.send(listen.part(m)));
 client.on('guildBanAdd', (g, m) => home.send(listen.ban('add', m)));
