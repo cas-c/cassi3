@@ -95,6 +95,7 @@ const emoji = [
     ':v:',
     ':wave:',
     ':raised_hands:',
+    ':peach:',
     ':pray:',
     ':clap:',
     ':muscle:',
