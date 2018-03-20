@@ -2,6 +2,7 @@ const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 
 const censorship = require('./censorship');
+const emoji = rquire('./emoji');
 
 const notification = message => {
     return new RichEmbed()
@@ -46,6 +47,7 @@ const shuffleArray = array => {
 
 module.exports = {
     censorship,
+    emoji,
     notification,
     userInfo,
     simpleEmbed,
