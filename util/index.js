@@ -2,7 +2,7 @@ const { RichEmbed } = require('discord.js');
 const moment = require('moment');
 
 const censorship = require('./censorship');
-const emoji = rquire('./emoji');
+const emoji = require('./emoji');
 
 const notification = message => {
     return new RichEmbed()
@@ -36,14 +36,14 @@ const shuffleArray = array => {
     let temp;
     let randomIndex;
     while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random * currentIndex);
-        currentIndex -= 1;
-        temp = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temp;
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+      temp = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temp;
     }
     return array;
-}
+};
 
 module.exports = {
     censorship,

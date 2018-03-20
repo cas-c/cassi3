@@ -1,5 +1,7 @@
 const info = require('./info');
 const stats = require('./stats');
+const horoscope = require('./horoscope');
+
 const { notification } = require('../util');
 
 const command = (text, message, client) => {
@@ -11,6 +13,10 @@ const command = (text, message, client) => {
 
     if (text.startsWith('notification')) {
         return notification(message);
+    }
+
+    if (text.startsWith('horoscope')) {
+        return horoscope(message);
     }
 
     if (text.startsWith('info')) {

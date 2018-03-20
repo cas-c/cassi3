@@ -1,4 +1,4 @@
-module.exports = [
+const emoji = [
     ':angry:',
     ':rage:',
     ':triumph:',
@@ -52,7 +52,6 @@ module.exports = [
     ':clap:',
     ':muscle:',
     ':metal:',
-    ':fu:',
     ':smiley_cat:',
     ':smile_cat:',
     ':heart_eyes_cat:',
@@ -77,3 +76,5 @@ module.exports = [
     ':tongue:',
     ':love_letter:'
 ];
+
+module.exports = emoji;
