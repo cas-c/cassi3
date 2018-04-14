@@ -4,7 +4,7 @@ const horoscope = require('./horoscope');
 const { notification, fp } = require('../util');
 const config = require('../config');
 
-const getInfo = (message, guild, client, text) => {
+const getInfo = (message, guild, client, query) => {
     if (message.channel.type === 'dm') return 'This command is only available in guilds.';
     let user = undefined;
     if (message.mentions.members !== {}) {
@@ -15,7 +15,6 @@ const getInfo = (message, guild, client, text) => {
         user = client.guilds.first().members.get(message.mentions.users.first().id);
     }
     if (user === undefined) {
-        const query = text.split(' ')[1];
         if (query === undefined) {
             user = message.member;
         } else {
@@ -41,7 +40,7 @@ const command = (text, message, client) => {
     const guild = client.guilds.find(id => config.discord.guild);
     const params = text.split(' ');
     return fp.switchF({
-        'info': () => getInfo(message, guild, client, text),
+        'info': () => getInfo(message, guild, client, params[1]),
         'horoscope': () => horoscope(message),
         'notification': () => notification(message),
         'stats': () => stats(message, client)
