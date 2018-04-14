@@ -16,6 +16,7 @@ client.on('ready', () => {
 
 client.on('message', m => {
     if (m.channel.type === 'text') { // in other words, not a DM
+        if (m.guild && m.guild.id !== config.discord.guild) return;
         if (!censorship.exemptions(m.author.username)) {
             const bannedWords = censorship.bannedWords(m.cleanContent.toLowerCase());
 

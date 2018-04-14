@@ -3,6 +3,7 @@ const moment = require('moment');
 
 const censorship = require('./censorship');
 const emoji = require('./emoji');
+const fp = require('./fp');
 
 const notification = message => {
     return new RichEmbed()
@@ -45,9 +46,12 @@ const shuffleArray = array => {
     return array;
 };
 
+
+
 module.exports = {
     censorship,
     emoji,
+    fp,
     notification,
     userInfo,
     simpleEmbed,
