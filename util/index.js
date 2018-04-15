@@ -1,4 +1,5 @@
 const { RichEmbed } = require('discord.js');
+const config = require('../config');
 const moment = require('moment');
 
 const censorship = require('./censorship');
@@ -46,14 +47,21 @@ const shuffleArray = array => {
     return array;
 };
 
+const field = (name, value, inline) => { return { name, value, inline }; };
 
+const wordIn = (array, text) => array.some(word => text.includes(word));
+
+const getHomeChannelFromMessage = message => message.client.channels.get(config.discord.guilds[message.guild.id].home);
 
 module.exports = {
     censorship,
+    field,
     emoji,
+    getHomeChannelFromMessage,
     fp,
     notification,
     userInfo,
     simpleEmbed,
-    shuffleArray
+    shuffleArray,
+    wordIn
 };

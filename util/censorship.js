@@ -1,16 +1,17 @@
-const config = require('../config.json');
+const config = require('../config.json').discord.censorship;
+const compose = (...fns) => fns.reduce((f, g) => (...args) => f(g(...args)));
 
 const exemptions = username => {
-    return config.discord.exemptions.includes(username);
+    return config.exemptions.includes(username);
 };
 
-const bannedWords = text => config.discord.banned.some(w => text.includes(w));
+const bannedWords = text => config.banned.some(w => text.includes(w));
 
 const warnedWords = text => {
-    if (config.discord.false.some(w => text.includes(w))) {
+    if (config.false.some(w => text.includes(w))) {
         return false;
     };
-    return config.discord.warned.some(w => text.includes(w));
+    return config.warned.some(w => text.includes(w));
 };
 
 
