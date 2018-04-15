@@ -3,7 +3,7 @@ const client = new Discord.Client();
 
 const listen = require('./listen');
 const handlers = require('./handlers');
-const { censorship, getHomeChannelFromMember, getHomeChannelFromMessage, wordIn } = require('./util');
+const { censorship, getHomeChannelFromGuild, getHomeChannelFromMember, getHomeChannelFromMessage, wordIn } = require('./util');
 
 const config = require('./config');
 
@@ -19,8 +19,8 @@ client.on('messageDelete', m => {
 });
 client.on('guildMemberAdd', m => getHomeChannelFromMember(m).send(listen.join(m)));
 client.on('guildMemberRemove', m => getHomeChannelFromMember(m).send(listen.part(m)));
-client.on('guildBanAdd', (g, m) => getHomeChannelFromMember(m).send(listen.ban('add', m)));
-client.on('guildBanRemove', (g, m) => getHomeChannelFromMember(m).send(listen.ban('remove', m)));
+client.on('guildBanAdd', (g, m) => getHomeChannelFromGuild(g).send(listen.ban('add', m)));
+client.on('guildBanRemove', (g, m) => getHomeChannelFromGuild(g).send(listen.ban('remove', m)));
 client.on('disconnect', () => console.warn('Cassi3 disconnected from Discord.'));
 client.on('reconnecting', () => console.warn('Cassi3 reconnecting to Discord.'));
 client.on('error', console.error);
