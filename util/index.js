@@ -52,11 +52,13 @@ const field = (name, value, inline) => { return { name, value, inline }; };
 const wordIn = (array, text) => array.some(word => text.includes(word));
 
 const getHomeChannelFromMessage = message => message.client.channels.get(config.discord.guilds[message.guild.id].home);
+const getHomeChannelFromMember = member => member.client.channels.get(config.discord.guilds[member.guild.id].home);
 
 module.exports = {
     censorship,
     field,
     emoji,
+    getHomeChannelFromMember,
     getHomeChannelFromMessage,
     fp,
     notification,
