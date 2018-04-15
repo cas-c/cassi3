@@ -6,7 +6,7 @@ const command = require('../command');
 
 const messageHandler = message => {
     if (message.author.id === config.discord.id) return;
-    if (message.channel.type !== 'text') return;
+    if (message.channel.type !== 'text' || !message.member) return;
     if (censored(message)) return;
     if (message.content.startsWith(config.prefix)) getHomeChannelFromMessage(message).send(command(message.content.split(config.prefix)[1], message, message.client));
 }
