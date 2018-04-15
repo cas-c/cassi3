@@ -14,7 +14,7 @@ client.on('ready', () => {
 client.on('message', handlers.message);
 
 client.on('messageDelete', m => {
-    //if (wordIn(config.discord.censorship.exemptions, m.author.id)) return;
+    if (wordIn(config.discord.censorship.exemptions, m.author.id)) return;
     getHomeChannelFromMessage(m).send(listen.delete(m));
 });
 client.on('guildMemberAdd', m => getHomeChannelFromMember(m).send(listen.join(m)));
