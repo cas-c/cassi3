@@ -7,14 +7,18 @@ const { censorship, getHomeChannelFromGuild, getHomeChannelFromMember, getHomeCh
 
 const config = require('./config');
 
+const TwitchClient = require('./twitch');
+
 client.on('ready', () => {
     console.info(`Logged in as ${client.user.tag}.`);
+    const tClient = new TwitchClient(client);
+    tClient.connect();
 });
 
 client.on('message', handlers.message);
 
 client.on('messageDelete', m => {
-    if (wordIn(config.discord.censorship.exemptions, m.author.id)) return;
+    // if (wordIn(config.discord.censorship.exemptions, m.author.id)) return;
     getHomeChannelFromMessage(m).send(listen.delete(m));
 });
 client.on('guildMemberAdd', m => getHomeChannelFromMember(m).send(listen.join(m)));
@@ -27,3 +31,5 @@ client.on('error', console.error);
 client.on('warn', console.warn);
 
 client.login(config.auth.token);
+
+
