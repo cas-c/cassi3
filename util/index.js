@@ -1,7 +1,6 @@
 const { RichEmbed } = require('discord.js');
-const config = require('../config');
 const moment = require('moment');
-
+const config = require('../config');
 const censorship = require('./censorship');
 const emoji = require('./emoji');
 const fp = require('./fp');
@@ -51,9 +50,18 @@ const field = (name, value, inline) => { return { name, value, inline }; };
 
 const wordIn = (array, text) => array.some(word => text.includes(word));
 
-const getHomeChannelFromMessage = message => message.client.channels.get(config.discord.guilds[message.guild.id].home);
-const getHomeChannelFromMember = member => member.client.channels.get(config.discord.guilds[member.guild.id].home);
-const getHomeChannelFromGuild = guild => guild.client.channels.get(config.discord.guilds[guild.id].home);
+const getHomeChannel = (client, id) => {
+    const channel = client.channels.get(id);
+    if (channel) return channel;
+    return {
+        send: () => {
+            console.error('Error: Attempted to send a message to server with no home channel. Update your configs.');
+        }
+    }
+}
+const getHomeChannelFromMessage = message => getHomeChannel(message.client, config.discord.guilds[message.guild.id].home);
+const getHomeChannelFromMember = member => getHomeChannel(member.client, config.discord.guilds[member.guild.id].home);
+const getHomeChannelFromGuild = guild => getHomeChannel(guild.client, config.discord.guilds[guild.id].home);
 
 module.exports = {
     censorship,
