@@ -1,3 +1,4 @@
+const booru = require('./booru');
 const info = require('./info');
 const stats = require('./stats');
 const horoscope = require('./horoscope');
@@ -40,6 +41,7 @@ const command = (text, message, client) => {
     const guild = client.guilds.find(id => config.discord.guild);
     const params = text.split(' ');
     return fp.switchF({
+        'booru': async () => await booru(message),
         'info': () => getInfo(message, guild, client, params[1]),
         'horoscope': () => horoscope(message),
         'notification': () => notification(message),
