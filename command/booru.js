@@ -27,7 +27,8 @@ const search = async message => {
                 url: image.common.file_url
             },
             fields: [
-                field('Source', `[${sourceWebsite || image.common.sourceWebsite}](${image.common.source})`),
+                field('Source', `[${sourceWebsite || image.common.sourceWebsite}](${image.common.source})`, true),
+                field('Post', `[${image.common.id}](http://safebooru.org/index.php?page=post&s=view&id=${image.common.id})`, true),
                 field('Tags', image.common.tags.join(' ').replace(/([\_|\*])/g, '\\$1').substr(0, 1023))
             ],
             color: '8700043',
