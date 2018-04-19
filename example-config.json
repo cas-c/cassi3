@@ -1,23 +1,59 @@
 {
     "auth": {
-        "owner": "owner UserID",
-        "token": "auth token"
+        "owner": "owner of the bot's discord ID",
+        "token": "your auth token"
     },
-    "prefix": "prefix ",
+    "prefix": "whatever you'd like to prefix (include a space) ",
     "discord": {
-        "homeChannel": "channel id to report to",
-        "guild": "home guild to monitor",
-        "exemptions": [
-            "username of exempted person"
+        "id": "bot's user id",
+        "guilds": {
+            "a guild id to moderate": {
+                "home": "discord channel ID to post moderation messages to",
+                "ourname": "a string for whatever you wanna refer to it as (never used, only for your notes)"
+            }
+        },
+        "searchChannels": [
+            "channel IDs allowed to use the booru search"
         ],
-        "banned": [
-            "words worthy of banning"
+        "searchTags": " rating:safe other_tags_here these_get_added_to_every_search -you_can_also_exclude",
+        "censorship": {
+            "exemptions": [
+                "discord user IDs to not moderate"
+            ],
+            "banned": [
+                "words that should get a user banned"
+            ],
+            "warned": [
+                "words that should send an alert to the reporting channel"
+            ],
+            "false": [
+                "words or phrases that are false positives for the warning system"
+            ]   
+        }
+    },
+    "twitch": {
+        "identity": {
+            "password": "twitch oauth string",
+            "username": "twitch username"
+        },
+        "channels": [
+            "channel to moderate"
         ],
-        "warned": [
-            "warning only words"
+        "connection": {
+            "reconnect": true,
+            "secure": true
+        },
+        "options": {
+            "debug": true
+        }
+    },
+    "twitchMod": {
+        "reporting": "discord channel ID to report to",
+        "bannedPhrases": [
+            "phrases to ban in twitch chat"
         ],
-        "false": [
-            "false positives for words in the warning zone"
+        "timeoutPhrases": [
+            "phrases to timeout in twitch chat"
         ]
     }
 }
