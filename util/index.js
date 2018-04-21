@@ -15,11 +15,10 @@ const notification = message => {
 }
 
 const userInfo = (user, title) => new RichEmbed()
-    .setTitle(title ? title : 'User Information')
-    .setDescription(user.user.username + '#' + user.user.discriminator)
-    .addField('Discord ID',  user.id)
-    .addField('Created On', moment(user.user.createdAt).utc().format('dddd, MMMM Do YYYY, h:mm:ss a'))
-    .addField('Joined On', moment(user.joinedAt).utc().format('dddd, MMMM Do YYYY, h:mm:ss a'))
+    .setTitle(`${title ? title : 'Info'}: @${user.user.username + '#' + user.user.discriminator}`)
+    .setDescription(user, true)
+    .addField('Created On', moment(user.user.createdAt).utc().format('MMMM Do YYYY, h:mm a'), true)
+    .addField('Joined On', moment(user.joinedAt).utc().format('MMMM Do YYYY, h:mm a'), true)
     .addField('Roles', user.roles.array().join(' '))
     .setColor('#84c08b')
     .setTimestamp(new Date())
