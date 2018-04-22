@@ -8,7 +8,7 @@ const deleteListener = message => {
     const response = new RichEmbed()
         .setTitle(`Message from ${user.username} deleted in #${message.channel.name}.`)
         .setDescription(`Shortcuts: ${user} @ ${message.channel}`)
-        .setColor('#84c08b')
+        .setColor('#FFFF33')
         .setTimestamp(new Date())
         //.setThumbnail(us);
     if (message.cleanContent) {

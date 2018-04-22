@@ -26,7 +26,7 @@ const censored = message => {
         const home = getHomeChannelFromMessage(message);
         home.send(new RichEmbed({
             title: '🚨 Funny Alert 🚨',
-            color: '8700043',
+            color: '16711680',
             fields: [
                 field('User', memberToFieldValue(message.member), true),
                 field('Channel', channelToFieldValue(message.channel), true),
