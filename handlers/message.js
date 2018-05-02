@@ -16,7 +16,7 @@ const messageHandler = async message => {
     if (message.channel.type !== 'text' || !message.member) return;
     if (censored(message)) return;
     if (message.content.startsWith(config.prefix)) message.channel.send(command(message.content.split(config.prefix)[1], message, message.client));
-    if (message.content.startsWith('$booru ')) message.channel.send(await command('booru', message, message.client));
+    // if (message.content.startsWith('$booru ')) message.channel.send(await command('booru', message, message.client));
 }
 
 module.exports = messageHandler;
