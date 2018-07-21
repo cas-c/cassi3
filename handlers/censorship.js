@@ -7,6 +7,7 @@ const { field, getHomeChannelFromMessage, wordIn } = require('../util');
 const exempt = id => wordIn(censorship.exemptions, id);
 const banned = text => wordIn(censorship.banned, text);
 const warned = text => wordIn(censorship.warned, text) && !wordIn(censorship.false, text);
+const autoDelete = text => wordIn(censorship.autoDelete, text);
 
 const memberToFieldValue = member => `${member} (${member.user.username}#${member.user.discriminator})`;
 
@@ -38,6 +39,10 @@ const censored = message => {
             image: firstAttachmentOrNull(message.attachments)
         }));
         return false;
+    }
+    if (autoDelete(content)) {
+        if (message.deletable) message.delete();
+        return true;
     }
     return false;
 }
