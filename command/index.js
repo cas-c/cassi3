@@ -1,5 +1,6 @@
 const booru = require('./booru');
 const info = require('./info');
+const serverInfo = require('./serverInfo');
 const stats = require('./stats');
 const horoscope = require('./horoscope');
 const { notification, fp } = require('../util');
@@ -45,6 +46,7 @@ const command = (text, message, client) => {
         'info': () => getInfo(message, guild, client, params[1]),
         'horoscope': () => horoscope(message),
         'notification': () => notification(message),
+        'server': () => serverInfo(message.guild),
         'stats': () => stats(message, client)
     })('This is not a valid command.')(params[0]);
 };
