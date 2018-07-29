@@ -13,6 +13,7 @@ client.once('ready', () => {
     console.info(`Logged in as ${client.user.tag}.`);
     const tClient = new TwitchClient(client);
     tClient.connect();
+    client.twitchClient = tClient;
 });
 
 client.on('message', handlers.message);
@@ -33,4 +34,3 @@ if (config.env !== 'dev') {
 }
 
 client.login(config.auth.token);
-
