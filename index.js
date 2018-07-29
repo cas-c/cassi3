@@ -9,7 +9,7 @@ const config = require('./config');
 
 const TwitchClient = require('./twitch');
 
-client.on('ready', () => {
+client.once('ready', () => {
     console.info(`Logged in as ${client.user.tag}.`);
     const tClient = new TwitchClient(client);
     tClient.connect();
