@@ -66,13 +66,13 @@ class TwitchClient extends Client {
                             })
                             .catch(err => console.log(`Tried to ban ${userstate['username']} but was unable to. Reason: ${err}`));
                     }
-                    if (timeoutMessage(message)) {
-                        this.timeout('nyannersz', userstate['username'], 600, `Disallowed phrase: ${message}.`)
-                            .then(({ channel, username, reason }) => {
-                                console.log('Timed out user for virus link in nyannersz.');
-                            })
-                            .catch(err => console.log(`Tried to timeout ${userstate['username']} but was unable to. Reason: ${err}`));
-                    }
+                    // if (timeoutMessage(message)) {
+                    //     this.timeout('nyannersz', userstate['username'], 600, `Disallowed phrase: ${message}.`)
+                    //         .then(({ channel, username, reason }) => {
+                    //             console.log('Timed out user for virus link in nyannersz.');
+                    //         })
+                    //         .catch(err => console.log(`Tried to timeout ${userstate['username']} but was unable to. Reason: ${err}`));
+                    // }
             }
         })
     }
